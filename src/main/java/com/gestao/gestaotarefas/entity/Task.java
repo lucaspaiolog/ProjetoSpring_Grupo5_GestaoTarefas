@@ -18,6 +18,7 @@ public class Task {
     private String status;
     @Column(nullable = false)
     private String responsible;
-
-
+    @ManyToOne
+    @JoinColumn(name = "task_list_id")
+    private TaskList taskList;
 }
