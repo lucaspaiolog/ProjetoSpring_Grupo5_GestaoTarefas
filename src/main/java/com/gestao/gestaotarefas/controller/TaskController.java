@@ -6,7 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -61,4 +63,35 @@ public class TaskController {
         }
     }
 
+
+    //Queries
+
+    @GetMapping("/count-by-status")
+    public Map<String, Long> countTasksByStatus() {
+        List<Object[]> result = service.getTaskCountByStatus();
+        Map<String, Long> response = new HashMap<>();
+
+        for (Object[] row : result) {
+            String status = (String) row[0];
+            Long count = ((Number) row[1]).longValue();
+            response.put(status, count);
+        }
+
+        return response;
+    }
+
+    @GetMapping("/by-priority")
+    public List<Task> getByPriority(@RequestParam int priority) {
+        return service.getTasksByPriority(priority);
+    }
+
+    @GetMapping("/by-responsible")
+    public List<Task> getByResponsible(@RequestParam String responsible) {
+        return service.getTasksByResponsible(responsible);
+    }
+
+    @GetMapping("/ordered-by-priority")
+    public List<Task> getOrderedByPriority() {
+        return service.getAllTasksOrderedByPriority();
+    }
 }

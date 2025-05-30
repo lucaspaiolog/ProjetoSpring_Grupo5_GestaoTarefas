@@ -58,4 +58,22 @@ public class TaskService {
         }
         return false;
     }
+
+    //Queries
+
+    public List<Object[]> getTaskCountByStatus() {
+        return repository.countTasksByStatus();
+    }
+
+    public List<Task> getTasksByPriority(int priority) {
+        return repository.findByPriority(priority);
+    }
+
+    public List<Task> getTasksByResponsible(String responsible) {
+        return repository.findByResponsible(responsible);
+    }
+
+    public List<Task> getAllTasksOrderedByPriority() {
+        return repository.findAllOrderByPriority();
+    }
 }
