@@ -111,7 +111,10 @@ GET /tasks/ordered-by-priority
 
 ## 🧑‍💻 Desenvolvedores
 
-- Integrantes do Grupo 5 – Curso de Desenvolvimento de Software
+- Kevin Flay
+- Lucas Paiolo
+- Marcos Nascimento
+- Gael Rodrigues
 
 ---
 
