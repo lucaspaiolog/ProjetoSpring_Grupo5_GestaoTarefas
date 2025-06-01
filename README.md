@@ -1,16 +1,35 @@
-# 📝 ProjetoSpring\_Grupo5\_GestaoTarefas
+# 📝 ProjetoSpring_Grupo5_GestaoTarefas
 
 Este é um sistema de gestão de tarefas desenvolvido em **Java com Spring Boot**, como parte de um projeto acadêmico.
 
 ---
 
+## 📑 Sumário
+
+- [⚙️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [📁 Estrutura do Projeto](#-estrutura-do-projeto)
+- [📋 Funcionalidades](#-funcionalidades)
+- [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
+- [📡 Endpoints da API](#-endpoints-da-api)
+  - [🔢 Contagem por status (agrupado)](#-contagem-por-status-agrupado)
+  - [🔢 Contagem de tarefas por status específico](#-contagem-de-tarefas-por-status-específico)
+  - [🔍 Buscar tarefas por prioridade](#-buscar-tarefas-por-prioridade)
+  - [🔍 Buscar tarefas por responsável](#-buscar-tarefas-por-responsável)
+  - [📊 Listar tarefas ordenadas por prioridade](#-listar-tarefas-ordenadas-por-prioridade)
+  - [📁 Operações com Listas de Tarefas](#-operações-com-listas-de-tarefas)
+- [🧑‍💻 Desenvolvedores](#-desenvolvedores)
+- [🗃️ Banco de Dados](#️-banco-de-dados)
+- [📝 Licença](#-licença)
+
+---
+
 ## ⚙️ Tecnologias Utilizadas
 
-* Java 17+
-* Spring Boot
-* Spring Data JPA
-* H2 Database (ou outro banco relacional via JPA)
-* Lombok
+- Java 17+
+- Spring Boot
+- Spring Data JPA
+- H2 Database (ou outro banco relacional via JPA)
+- Lombok
 
 ---
 
@@ -33,34 +52,19 @@ src/
 
 ## 📋 Funcionalidades
 
-* Cadastro e gerenciamento de tarefas.
-* Associação de tarefas a listas.
-* Filtros e consultas personalizadas:
-
-  * Contagem de tarefas por status.
-  * Consulta por prioridade.
-  * Consulta por responsável.
-  * Listagem ordenada por prioridade.
-
----
-
-## ✨ Sumário
-
-* [⚙️ Tecnologias Utilizadas](#⚙️-tecnologias-utilizadas)
-* [📁 Estrutura do Projeto](#📁-estrutura-do-projeto)
-* [📋 Funcionalidades](#📋-funcionalidades)
-* [🚀 Como Executar o Projeto](#🚀-como-executar-o-projeto)
-* [📡 Endpoints da API](#📡-endpoints-da-api)
-* [🧑‍💻 Desenvolvedores](#🧑‍💻-desenvolvedores)
-* [🗃️ Banco de Dados](#🗃️-banco-de-dados)
-* [📝 Licença](#📝-licença)
+- Cadastro e gerenciamento de tarefas.
+- Associação de tarefas a listas.
+- Filtros e consultas personalizadas:
+  - Contagem de tarefas por status.
+  - Consulta por prioridade.
+  - Consulta por responsável.
+  - Listagem ordenada por prioridade.
 
 ---
 
 ## 🚀 Como Executar o Projeto
 
 1. Clone o repositório:
-
    ```bash
    git clone https://github.com/lucaspaiolog/ProjetoSpring_Grupo5_GestaoTarefas.git
    ```
@@ -68,13 +72,11 @@ src/
 2. Abra o projeto em sua IDE (IntelliJ, Eclipse, VS Code).
 
 3. Execute a classe principal:
-
-   ```
+   ```java
    com.gestao.gestaotarefas.GestaoTarefasApplication
    ```
 
 4. Acesse a aplicação:
-
    ```
    http://localhost:8080
    ```
@@ -83,70 +85,11 @@ src/
 
 ## 📡 Endpoints da API
 
-### 🌎 Tarefas (`/gestao-tarefas`)
-
-#### Listar todas as tarefas
-
-```http
-GET /gestao-tarefas
+### 🔢 Contagem por status (agrupado)
 ```
-
-#### Buscar tarefa por ID
-
-```http
-GET /gestao-tarefas/{id}
+GET /tasks/count-by-status
 ```
-
-#### Criar uma nova tarefa
-
-```http
-POST /gestao-tarefas
-```
-
-#### Atualizar uma tarefa
-
-```http
-PUT /gestao-tarefas/{id}
-```
-
-#### Deletar uma tarefa
-
-```http
-DELETE /gestao-tarefas/{id}
-```
-
-#### Atualizar status da tarefa
-
-```http
-PATCH /gestao-tarefas/{id}/status
-```
-
-**Body (text/plain):**
-
-```
-"novoStatus"
-```
-
-#### Atualizar responsável da tarefa
-
-```http
-PATCH /gestao-tarefas/{id}/responsible
-```
-
-**Body (text/plain):**
-
-```
-"novoResponsavel"
-```
-
-#### Contagem de tarefas agrupadas por status
-
-```http
-GET /gestao-tarefas/count-by-status
-```
-
 **Resposta:**
-
 ```json
 {
   "pendente": 3,
@@ -155,90 +98,48 @@ GET /gestao-tarefas/count-by-status
 }
 ```
 
-#### Buscar tarefas por prioridade
-
-```http
-GET /gestao-tarefas/by-priority?priority=2
+### 🔢 Contagem de tarefas por status específico
+```
+GET /tasks/count?status=pendente
 ```
 
-#### Buscar tarefas por responsável
-
-```http
-GET /gestao-tarefas/by-responsible?responsible=João
+### 🔍 Buscar tarefas por prioridade
+```
+GET /tasks/by-priority?priority=2
 ```
 
-#### Listar tarefas ordenadas por prioridade
-
-```http
-GET /gestao-tarefas/ordered-by-priority
+### 🔍 Buscar tarefas por responsável
+```
+GET /tasks/by-responsible?responsible=João
 ```
 
----
-
-### 📂 Listas de Tarefas (`/gestao-tarefas/lists`)
-
-#### Adicionar tarefa à lista
-
-```http
-POST /gestao-tarefas/lists?listId={listId}
+### 📊 Listar tarefas ordenadas por prioridade
+```
+GET /tasks/ordered-by-priority
 ```
 
-**Body (application/json):**
+### 📁 Operações com Listas de Tarefas
 
-```json
-123
 ```
-
-#### Remover tarefa da lista
-
-```http
-DELETE /gestao-tarefas/lists/{listId}/tasks/{taskId}
-```
-
-#### Buscar todas as tarefas de uma lista
-
-```http
-GET /gestao-tarefas/lists/{listId}/tasks/allTasks
-```
-
-#### Buscar tarefa específica dentro de uma lista
-
-```http
-GET /gestao-tarefas/lists/{listId}/tasks/{taskId}
-```
-
-#### Remover uma lista de tarefas
-
-```http
+GET    /gestao-tarefas/lists/{id}/tasks
+POST   /gestao-tarefas/lists?listId={listId}
 DELETE /gestao-tarefas/lists/{id}
-```
-
-#### Buscar tarefas da lista por status
-
-```http
-GET /gestao-tarefas/lists/{listId}/tasks/filterByStatus?status=pendente
-```
-
-#### Buscar tarefas da lista por responsável
-
-```http
-GET /gestao-tarefas/lists/{listId}/tasks/filterByResponsible?responsible=João
-```
-
-#### Buscar tarefas da lista por prioridade
-
-```http
-GET /gestao-tarefas/lists/{listId}/tasks/filterByPriority?priority=2
+DELETE /gestao-tarefas/lists/{listId}/tasks/{taskId}
+GET    /gestao-tarefas/lists/{listId}/tasks/{taskId}
+GET    /gestao-tarefas/lists/{listId}/tasks/allTasks
+GET    /gestao-tarefas/lists/{listId}/tasks/filterByStatus?status=pendente
+GET    /gestao-tarefas/lists/{listId}/tasks/filterByResponsible?responsible=João
+GET    /gestao-tarefas/lists/{listId}/tasks/filterByPriority?priority=2
 ```
 
 ---
 
 ## 🧑‍💻 Desenvolvedores
 
-* Kevin Flay
-* Lucas Paiolo
-* Marcos Nascimento
-* Gael Rodrigues
+- Kevin Flay
+- Lucas Paiolo
+- Marcos Nascimento
+- Gael Rodrigues
 
 ---
 
