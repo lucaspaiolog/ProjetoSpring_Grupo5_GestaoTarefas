@@ -13,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/gestao-tarefas")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class TaskController {
 

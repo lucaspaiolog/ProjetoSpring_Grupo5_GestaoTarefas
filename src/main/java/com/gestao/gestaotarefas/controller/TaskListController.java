@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/gestao-tarefas/lists")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class TaskListController {
 
