@@ -1,11 +1,14 @@
 package com.gestao.gestaotarefas.controller;
 
 import com.gestao.gestaotarefas.entity.Task;
+import com.gestao.gestaotarefas.entity.TaskList;
 import com.gestao.gestaotarefas.service.TaskListService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/gestao-tarefas/lists")
@@ -14,6 +17,24 @@ import java.util.List;
 public class TaskListController {
 
     private final TaskListService service;
+
+    @GetMapping
+    public List<TaskList> getAllTaskLists() {
+        return service.getAllTaskLists();
+    }
+    @PatchMapping("/{id}/name")
+    public ResponseEntity<TaskList> updateTaskListName(@PathVariable Long id, @RequestBody Map<String, String> request) {
+        String newName = request.get("name");
+        if (newName == null || newName.trim().isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        return service.updateTaskListName(id, newName)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+
 
     @DeleteMapping("/{id}")
     public void deleteTaskList(@PathVariable Long id) {
@@ -25,8 +46,8 @@ public class TaskListController {
         return service.getTasksByListId(id);
     }
 
-    @PostMapping
-    public void addTaskToList(@RequestParam Long listId, @RequestBody Long taskId) {
+    @PostMapping("/{listId}/tasks")
+    public void addTaskToList(@PathVariable Long listId, @RequestBody Long taskId) {
         service.addTaskToList(listId, taskId);
     }
 
@@ -58,6 +79,11 @@ public class TaskListController {
     @GetMapping("/{listId}/tasks/filterByPriority")
     public List<Task> getTasksFilteredByPriority(@PathVariable Long listId, @RequestParam int priority) {
         return service.getTasksFilteredByPriority(listId, priority);
+    }
+    @PostMapping
+    public void createTaskList(@RequestBody Map<String, String> request) {
+        String name = request.get("name");
+        service.createTaskList(name);
     }
 
 

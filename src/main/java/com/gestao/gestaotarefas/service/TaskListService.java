@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.gestao.gestaotarefas.repository.TaskRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -54,6 +55,11 @@ public class TaskListService {
                 });
     }
 
+    public List<TaskList> getAllTaskLists() {
+        return taskListRepository.findAll();
+    }
+
+
     public Task getTaskByIdInList(Long listId, Long taskId) {
         return taskListRepository.findById(listId)
                 .map(taskList -> taskList.getTasks().stream()
@@ -75,6 +81,13 @@ public class TaskListService {
                         .toList())
                 .orElseThrow(() -> new IllegalArgumentException("Task list with id " + listId + " does not exist."));
     }
+    public Optional<TaskList> updateTaskListName(Long listId, String newName) {
+        return taskListRepository.findById(listId)
+                .map(taskList -> {
+                    taskList.setName(newName);
+                    return taskListRepository.save(taskList);
+                });
+    }
 
     public List<Task> getTasksFilteredByResponsible(Long listId, String responsible) {
         return taskListRepository.findById(listId)
@@ -91,4 +104,11 @@ public class TaskListService {
                         .toList())
                 .orElseThrow(() -> new IllegalArgumentException("Task list with id " + listId + " does not exist."));
     }
+
+    public void createTaskList(String name) {
+        TaskList newList = new TaskList();
+        newList.setName(name);
+        taskListRepository.save(newList);
+    }
+
 }

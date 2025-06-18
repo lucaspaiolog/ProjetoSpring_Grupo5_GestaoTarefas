@@ -9,6 +9,12 @@ import java.util.List;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
+
+
+
+
+
+
     // Nativa
     @Query(value = "SELECT status, COUNT(*) FROM task GROUP BY status", nativeQuery = true)
     List<Object[]> countTasksByStatus();
@@ -21,4 +27,10 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     // JPQL
     @Query("SELECT t FROM Task t ORDER BY t.priority ASC")
     List<Task> findAllOrderByPriority();
+
+
+
+
+
+
 }
