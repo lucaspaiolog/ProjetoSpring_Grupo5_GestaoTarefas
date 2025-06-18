@@ -1,98 +1,91 @@
-Of course\! Here is an enhanced version of your `README.md` file.
-
-It includes all the endpoints from your controllers, example requests using `curl`, clarifications on the database setup, and an improved structure to provide a better experience for developers.
-
-You can copy and paste the following content directly into your `README.md` file.
-
-````markdown
 # 📝 ProjetoSpring_Grupo5_GestaoTarefas
 
-A task management system developed in **Java with Spring Boot** as part of an academic project. This system allows users to create, manage, and organize tasks within lists through a RESTful API.
+Um sistema de gestão de tarefas desenvolvido em **Java com Spring Boot** como parte de um projeto acadêmico. Este sistema permite que os usuários criem, gerenciem e organizem tarefas em listas através de uma API RESTful.
 
 ---
 
-## 📑 Table of Contents
+## 📑 Sumário
 
-- [✨ Key Features](#-key-features)
-- [⚙️ Technologies Used](#️-technologies-used)
-- [🏁 Prerequisites](#-prerequisites)
-- [🚀 How to Run the Project](#-how-to-run-the-project)
-- [🗃️ Database Configuration](#️-database-configuration)
-- [📁 Project Structure](#-project-structure)
-- [📡 API Endpoints](#-api-endpoints)
-  - [Tasks API](#tasks-api)
-  - [Task Lists API](#task-lists-api)
-- [📦 Data Models](#-data-models)
-- [🧑‍💻 Developers](#-developers)
-- [📝 License](#-license)
-
----
-
-## ✨ Key Features
-
-- CRUD operations for tasks (Create, Read, Update, Delete).
-- Grouping tasks into lists.
-- Advanced queries and filtering:
-  - Count tasks aggregated by status.
-  - Fetch tasks by priority or responsible person.
-  - Sort tasks by priority.
-  - Filter tasks within a specific list by status, responsible, or priority.
+- [✨ Principais Funcionalidades](#-principais-funcionalidades)
+- [⚙️ Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [🏁 Pré-requisitos](#-pré-requisitos)
+- [🚀 Como Executar o Projeto](#-como-executar-o-projeto)
+- [🗃️ Configuração do Banco de Dados](#️-configuração-do-banco-de-dados)
+- [📁 Estrutura do Projeto](#-estrutura-do-projeto)
+- [📡 Endpoints da API](#-endpoints-da-api)
+  - [API de Tarefas](#api-de-tarefas)
+  - [API de Listas de Tarefas](#api-de-listas-de-tarefas)
+- [📦 Modelos de Dados](#-modelos-de-dados)
+- [🧑‍💻 Desenvolvedores](#-desenvolvedores)
+- [📝 Licença](#-licença)
 
 ---
 
-## ⚙️ Technologies Used
+## ✨ Principais Funcionalidades
+
+- Operações CRUD para tarefas (Criar, Ler, Atualizar, Deletar).
+- Agrupamento de tarefas em listas.
+- Consultas e filtros avançados:
+  - Contagem de tarefas agregadas por status.
+  - Busca de tarefas por prioridade ou responsável.
+  - Ordenação de tarefas por prioridade.
+  - Filtragem de tarefas dentro de uma lista específica por status, responsável ou prioridade.
+
+---
+
+## ⚙️ Tecnologias Utilizadas
 
 - **Java 17**
 - **Spring Boot 3.5.0**
-- **Spring Web**: For building the RESTful API.
-- **Spring Data JPA**: For data persistence.
-- **PostgreSQL**: As the primary relational database.
-- **H2 Database**: Available as an in-memory alternative for testing.
-- **Lombok**: To reduce boilerplate code.
-- **Maven**: For dependency management and project build.
+- **Spring Web**: Para a construção da API RESTful.
+- **Spring Data JPA**: Para a persistência de dados.
+- **PostgreSQL**: Como o banco de dados relacional principal.
+- **H2 Database**: Disponível como uma alternativa em memória para testes.
+- **Lombok**: Para reduzir código boilerplate.
+- **Maven**: Para gerenciamento de dependências e build do projeto.
 
 ---
 
-## 🏁 Prerequisites
+## 🏁 Pré-requisitos
 
-Before you begin, ensure you have the following installed:
-- **JDK 17** or newer.
+Antes de começar, garanta que você tenha o seguinte instalado:
+- **JDK 17** ou superior.
 - **Apache Maven**.
-- A **PostgreSQL** database instance, or Docker to run one.
-- An IDE of your choice (e.g., IntelliJ IDEA, Eclipse, VS Code).
-- An API client like [Postman](https://www.postman.com/) or `curl` for testing the endpoints.
+- Uma instância de banco de dados **PostgreSQL**, ou Docker para executá-la.
+- Uma IDE de sua escolha (ex: IntelliJ IDEA, Eclipse, VS Code).
+- Um cliente de API como [Postman](https://www.postman.com/) ou `curl` para testar os endpoints.
 
 ---
 
-## 🚀 How to Run the Project
+## 🚀 Como Executar o Projeto
 
-1.  **Clone the repository:**
+1.  **Clone o repositório:**
     ```bash
     git clone [https://github.com/lucaspaiolog/ProjetoSpring_Grupo5_GestaoTarefas.git](https://github.com/lucaspaiolog/ProjetoSpring_Grupo5_GestaoTarefas.git)
     cd ProjetoSpring_Grupo5_GestaoTarefas
     ```
 
-2.  **Configure the database:**
-    Open the `src/main/resources/application.yaml` file and update the database connection details (`url`, `username`, `password`) to match your local environment.
+2.  **Configure o banco de dados:**
+    Abra o arquivo `src/main/resources/application.yaml` e atualize os detalhes de conexão do banco de dados (`url`, `username`, `password`) para corresponder ao seu ambiente local.
 
-3.  **Build and Run the application:**
-    You can run the app directly from your IDE by executing the `main` method in:
+3.  **Compile e execute a aplicação:**
+    Você pode executar a aplicação diretamente da sua IDE, executando o método `main` em:
     ```java
     com.gestao.gestaotarefas.GestaoTarefasApplication
     ```
-    Alternatively, you can use Maven:
+    Alternativamente, você pode usar o Maven:
     ```bash
     mvn spring-boot:run
     ```
 
-4.  **Access the application:**
-    The API will be available at `http://localhost:8080`.
+4.  **Acesse a aplicação:**
+    A API estará disponível em `http://localhost:8080`.
 
 ---
 
-## 🗃️ Database Configuration
+## 🗃️ Configuração do Banco de Dados
 
-The project is configured to use **PostgreSQL** by default.
+O projeto está configurado para usar **PostgreSQL** por padrão.
 
 **`src/main/resources/application.yaml`:**
 ```yaml
@@ -110,65 +103,65 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: update # Automatically updates the schema on startup
+      ddl-auto: update # Atualiza o schema automaticamente na inicialização
 ````
 
-For a lightweight, zero-configuration setup (ideal for quick tests), you can switch to the **H2 in-memory database** by modifying your `application.yaml` (or `application.properties`).
+Para uma configuração leve e sem necessidade de instalação (ideal para testes rápidos), você pode mudar para o banco de dados em memória **H2** modificando seu `application.yaml` (ou `application.properties`).
 
 -----
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
-The project follows a standard layered architecture for separation of concerns.
+O projeto segue uma arquitetura em camadas padrão para a separação de responsabilidades.
 
 ```
 src/main/java/com/gestao/gestaotarefas/
-├── controller/   # API endpoints (REST Controllers)
-├── service/      # Business logic
-├── repository/   # Data access layer (JPA Repositories)
-└── entity/       # Data models (JPA Entities)
+├── controller/   # Endpoints da API (REST Controllers)
+├── service/      # Lógica de negócio
+├── repository/   # Camada de acesso a dados (JPA Repositories)
+└── entity/       # Modelos de dados (JPA Entities)
 ```
 
 -----
 
-## 📡 API Endpoints
+## 📡 Endpoints da API
 
-The base path for all endpoints is `/gestao-tarefas`.
+O caminho base para todos os endpoints é `/gestao-tarefas`.
 
-### Tasks API
+### API de Tarefas
 
-Endpoints for managing individual tasks.
+Endpoints para o gerenciamento de tarefas individuais.
 
 \<details\>
-\<summary\>\<strong\>POST /tasks - Create a new task\</strong\>\</summary\>
+\<summary\>\<strong\>POST /tasks - Criar uma nova tarefa\</strong\>\</summary\>
 
-Creates a new task. The `taskList` can be null.
+Cria uma nova tarefa. O campo `taskList` pode ser nulo.
 
-  - **Request Body:**
+  - **Corpo da Requisição:**
     ```json
     {
-      "description": "Implement the authentication feature",
+      "description": "Implementar a funcionalidade de autenticação",
       "priority": 1,
       "status": "Pendente",
       "responsible": "Gael Rodrigues",
       "taskList": null
     }
     ```
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl -X POST http://localhost:8080/gestao-tarefas \
     -H "Content-Type: application/json" \
-    -d '{"description": "New API Task", "priority": 1, "status": "Pendente", "responsible": "Dev"}'
+    -d '{"description": "Nova Tarefa via API", "priority": 1, "status": "Pendente", "responsible": "Dev"}'
     ```
 
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /tasks - Get all tasks\</strong\>\</summary\>
+\<summary\>\<strong\>GET /tasks - Obter todas as tarefas\</strong\>\</summary\>
 
-Retrieves a list of all tasks in the system.
+Recupera uma lista de todas as tarefas no sistema.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl http://localhost:8080/gestao-tarefas
     ```
@@ -176,11 +169,11 @@ Retrieves a list of all tasks in the system.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /tasks/{id} - Get task by ID\</strong\>\</summary\>
+\<summary\>\<strong\>GET /tasks/{id} - Obter tarefa por ID\</strong\>\</summary\>
 
-Retrieves a single task by its unique ID.
+Recupera uma única tarefa pelo seu ID único.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl http://localhost:8080/gestao-tarefas/1
     ```
@@ -188,25 +181,25 @@ Retrieves a single task by its unique ID.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>PUT /tasks/{id} - Update a task\</strong\>\</summary\>
+\<summary\>\<strong\>PUT /tasks/{id} - Atualizar uma tarefa\</strong\>\</summary\>
 
-Updates all fields of an existing task.
+Atualiza todos os campos de uma tarefa existente.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl -X PUT http://localhost:8080/gestao-tarefas/1 \
     -H "Content-Type: application/json" \
-    -d '{"description": "Updated Task Description", "priority": 2, "status": "Em Andamento", "responsible": "Marcos"}'
+    -d '{"description": "Descrição da Tarefa Atualizada", "priority": 2, "status": "Em Andamento", "responsible": "Marcos"}'
     ```
 
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>PATCH /tasks/{id}/status - Update task status\</strong\>\</summary\>
+\<summary\>\<strong\>PATCH /tasks/{id}/status - Atualizar status da tarefa\</strong\>\</summary\>
 
-Partially updates the status of a specific task.
+Atualiza parcialmente o status de uma tarefa específica.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl -X PATCH http://localhost:8080/gestao-tarefas/1/status \
     -H "Content-Type: text/plain" \
@@ -216,11 +209,11 @@ Partially updates the status of a specific task.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>PATCH /tasks/{id}/responsible - Update task responsible\</strong\>\</summary\>
+\<summary\>\<strong\>PATCH /tasks/{id}/responsible - Atualizar responsável da tarefa\</strong\>\</summary\>
 
-Partially updates the responsible person for a task.
+Atualiza parcialmente a pessoa responsável por uma tarefa.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl -X PATCH http://localhost:8080/gestao-tarefas/1/responsible \
     -H "Content-Type: text/plain" \
@@ -230,11 +223,11 @@ Partially updates the responsible person for a task.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>DELETE /tasks/{id} - Delete a task\</strong\>\</summary\>
+\<summary\>\<strong\>DELETE /tasks/{id} - Deletar uma tarefa\</strong\>\</summary\>
 
-Deletes a task by its ID.
+Deleta uma tarefa pelo seu ID.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl -X DELETE http://localhost:8080/gestao-tarefas/1
     ```
@@ -242,15 +235,15 @@ Deletes a task by its ID.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /tasks/count-by-status - Count tasks by status\</strong\>\</summary\>
+\<summary\>\<strong\>GET /tasks/count-by-status - Contar tarefas por status\</strong\>\</summary\>
 
-Returns a count of tasks, grouped by their status.
+Retorna a contagem de tarefas, agrupadas por status.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl http://localhost:8080/gestao-tarefas/count-by-status
     ```
-  - **Example Response:**
+  - **Exemplo de Resposta:**
     ```json
     {
       "Pendente": 5,
@@ -262,11 +255,11 @@ Returns a count of tasks, grouped by their status.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /tasks/by-priority - Find tasks by priority\</strong\>\</summary\>
+\<summary\>\<strong\>GET /tasks/by-priority - Buscar tarefas por prioridade\</strong\>\</summary\>
 
-Finds all tasks that match a given priority level.
+Encontra todas as tarefas que correspondem a um determinado nível de prioridade.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl "http://localhost:8080/gestao-tarefas/by-priority?priority=1"
     ```
@@ -274,11 +267,11 @@ Finds all tasks that match a given priority level.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /tasks/by-responsible - Find tasks by responsible\</strong\>\</summary\>
+\<summary\>\<strong\>GET /tasks/by-responsible - Buscar tarefas por responsável\</strong\>\</summary\>
 
-Finds all tasks assigned to a specific person.
+Encontra todas as tarefas atribuídas a uma pessoa específica.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl "http://localhost:8080/gestao-tarefas/by-responsible?responsible=Lucas%20Paiolo"
     ```
@@ -286,29 +279,29 @@ Finds all tasks assigned to a specific person.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /tasks/ordered-by-priority - List tasks by priority\</strong\>\</summary\>
+\<summary\>\<strong\>GET /tasks/ordered-by-priority - Listar tarefas por prioridade\</strong\>\</summary\>
 
-Returns all tasks sorted in ascending order of priority.
+Retorna todas as tarefas ordenadas por prioridade em ordem ascendente.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl http://localhost:8080/gestao-tarefas/ordered-by-priority
     ```
 
 \</details\>
 
-### Task Lists API
+### API de Listas de Tarefas
 
-Endpoints for managing lists and their associated tasks.
-*Note: To create a `TaskList`, you must first save it to the database. The current API does not expose a direct endpoint for `TaskList` creation; it must be done at the database level or via cascading from another entity.*
+Endpoints para gerenciar listas e suas tarefas associadas.
+*Nota: Para criar uma `TaskList`, você deve primeiro salvá-la no banco de dados. A API atual não expõe um endpoint direto para a criação de `TaskList`; isso deve ser feito no nível do banco de dados ou via cascata de outra entidade.*
 
 \<details\>
-\<summary\>\<strong\>POST /lists - Add a task to a list\</strong\>\</summary\>
+\<summary\>\<strong\>POST /lists - Adicionar uma tarefa a uma lista\</strong\>\</summary\>
 
-Associates an existing task with an existing task list.
+Associa uma tarefa existente a uma lista de tarefas existente.
 
-  - **Query Parameters:** `listId`, `taskId`
-  - **Example `curl`:**
+  - **Parâmetros da Query:** `listId`, `taskId`
+  - **Exemplo `curl`:**
     ```bash
     curl -X POST "http://localhost:8080/gestao-tarefas/lists?listId=1&taskId=5"
     ```
@@ -316,11 +309,11 @@ Associates an existing task with an existing task list.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /lists/{id}/tasks - Get all tasks from a list\</strong\>\</summary\>
+\<summary\>\<strong\>GET /lists/{id}/tasks - Obter todas as tarefas de uma lista\</strong\>\</summary\>
 
-Retrieves all tasks belonging to a specific list.
+Recupera todas as tarefas que pertencem a uma lista específica.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl http://localhost:8080/gestao-tarefas/lists/1/tasks
     ```
@@ -328,11 +321,11 @@ Retrieves all tasks belonging to a specific list.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>DELETE /lists/{id} - Delete a task list\</strong\>\</summary\>
+\<summary\>\<strong\>DELETE /lists/{id} - Deletar uma lista de tarefas\</strong\>\</summary\>
 
-Deletes an entire task list and, due to cascading, all tasks within it.
+Deleta uma lista de tarefas inteira e, devido ao cascateamento, todas as tarefas dentro dela.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl -X DELETE http://localhost:8080/gestao-tarefas/lists/1
     ```
@@ -340,11 +333,11 @@ Deletes an entire task list and, due to cascading, all tasks within it.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>DELETE /lists/{listId}/tasks/{taskId} - Remove task from list\</strong\>\</summary\>
+\<summary\>\<strong\>DELETE /lists/{listId}/tasks/{taskId} - Remover tarefa da lista\</strong\>\</summary\>
 
-Removes the association between a task and a list. The task itself is not deleted.
+Remove a associação entre uma tarefa e uma lista. A tarefa em si não é deletada.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl -X DELETE http://localhost:8080/gestao-tarefas/lists/1/tasks/5
     ```
@@ -352,11 +345,11 @@ Removes the association between a task and a list. The task itself is not delete
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByStatus - Filter list by status\</strong\>\</summary\>
+\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByStatus - Filtrar lista por status\</strong\>\</summary\>
 
-Gets all tasks in a list filtered by a specific status.
+Obtém todas as tarefas em uma lista filtradas por um status específico.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl "http://localhost:8080/gestao-tarefas/lists/1/tasks/filterByStatus?status=Pendente"
     ```
@@ -364,11 +357,11 @@ Gets all tasks in a list filtered by a specific status.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByPriority - Filter list by priority\</strong\>\</summary\>
+\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByPriority - Filtrar lista por prioridade\</strong\>\</summary\>
 
-Gets all tasks in a list filtered by a specific priority level.
+Obtém todas as tarefas em uma lista filtradas por um nível de prioridade específico.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl "http://localhost:8080/gestao-tarefas/lists/1/tasks/filterByPriority?priority=1"
     ```
@@ -376,11 +369,11 @@ Gets all tasks in a list filtered by a specific priority level.
 \</details\>
 
 \<details\>
-\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByResponsible - Filter list by responsible\</strong\>\</summary\>
+\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByResponsible - Filtrar lista por responsável\</strong\>\</summary\>
 
-Gets all tasks in a list filtered by a specific responsible person.
+Obtém todas as tarefas em uma lista filtradas por uma pessoa responsável específica.
 
-  - **Example `curl`:**
+  - **Exemplo `curl`:**
     ```bash
     curl "http://localhost:8080/gestao-tarefas/lists/1/tasks/filterByResponsible?responsible=Gael%20Rodrigues"
     ```
@@ -389,11 +382,11 @@ Gets all tasks in a list filtered by a specific responsible person.
 
 -----
 
-## 📦 Data Models
+## 📦 Modelos de Dados
 
-### Task
+### Tarefa (Task)
 
-Represents a single task item.
+Representa um item de tarefa individual.
 
 ```java
 @Entity
@@ -412,9 +405,9 @@ public class Task {
 }
 ```
 
-### TaskList
+### Lista de Tarefas (TaskList)
 
-Represents a list that contains multiple tasks.
+Representa uma lista que contém múltiplas tarefas.
 
 ```java
 @Entity
@@ -430,7 +423,7 @@ public class TaskList {
 
 -----
 
-## 🧑‍💻 Developers
+## 🧑‍💻 Desenvolvedores
 
   - Kevin Flay
   - Lucas Paiolo
@@ -439,9 +432,6 @@ public class TaskList {
 
 -----
 
-## 📝 License
+## 📝 Licença
 
-This is an academic project and is free for educational use.
-
-```
-```
+Este é um projeto acadêmico e é de uso livre para fins educacionais.
