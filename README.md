@@ -132,8 +132,7 @@ O caminho base para todos os endpoints é `/gestao-tarefas`.
 
 Endpoints para o gerenciamento de tarefas individuais.
 
-\<details\>
-\<summary\>\<strong\>POST /tasks - Criar uma nova tarefa\</strong\>\</summary\>
+POST /tasks - Criar uma nova tarefa
 
 Cria uma nova tarefa. O campo `taskList` pode ser nulo.
 
@@ -154,10 +153,7 @@ Cria uma nova tarefa. O campo `taskList` pode ser nulo.
     -d '{"description": "Nova Tarefa via API", "priority": 1, "status": "Pendente", "responsible": "Dev"}'
     ```
 
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /tasks - Obter todas as tarefas\</strong\>\</summary\>
+GET /tasks - Obter todas as tarefas
 
 Recupera uma lista de todas as tarefas no sistema.
 
@@ -165,11 +161,7 @@ Recupera uma lista de todas as tarefas no sistema.
     ```bash
     curl http://localhost:8080/gestao-tarefas
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /tasks/{id} - Obter tarefa por ID\</strong\>\</summary\>
+GET /tasks/{id} - Obter tarefa por ID
 
 Recupera uma única tarefa pelo seu ID único.
 
@@ -177,11 +169,7 @@ Recupera uma única tarefa pelo seu ID único.
     ```bash
     curl http://localhost:8080/gestao-tarefas/1
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>PUT /tasks/{id} - Atualizar uma tarefa\</strong\>\</summary\>
+PUT /tasks/{id} - Atualizar uma tarefa
 
 Atualiza todos os campos de uma tarefa existente.
 
@@ -191,11 +179,7 @@ Atualiza todos os campos de uma tarefa existente.
     -H "Content-Type: application/json" \
     -d '{"description": "Descrição da Tarefa Atualizada", "priority": 2, "status": "Em Andamento", "responsible": "Marcos"}'
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>PATCH /tasks/{id}/status - Atualizar status da tarefa\</strong\>\</summary\>
+PATCH /tasks/{id}/status - Atualizar status da tarefa
 
 Atualiza parcialmente o status de uma tarefa específica.
 
@@ -205,11 +189,7 @@ Atualiza parcialmente o status de uma tarefa específica.
     -H "Content-Type: text/plain" \
     -d "Concluída"
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>PATCH /tasks/{id}/responsible - Atualizar responsável da tarefa\</strong\>\</summary\>
+PATCH /tasks/{id}/responsible - Atualizar responsável da tarefa
 
 Atualiza parcialmente a pessoa responsável por uma tarefa.
 
@@ -219,11 +199,7 @@ Atualiza parcialmente a pessoa responsável por uma tarefa.
     -H "Content-Type: text/plain" \
     -d "Kevin Flay"
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>DELETE /tasks/{id} - Deletar uma tarefa\</strong\>\</summary\>
+DELETE /tasks/{id} - Deletar uma tarefa
 
 Deleta uma tarefa pelo seu ID.
 
@@ -231,11 +207,7 @@ Deleta uma tarefa pelo seu ID.
     ```bash
     curl -X DELETE http://localhost:8080/gestao-tarefas/1
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /tasks/count-by-status - Contar tarefas por status\</strong\>\</summary\>
+/tasks/count-by-status - Contar tarefas por status
 
 Retorna a contagem de tarefas, agrupadas por status.
 
@@ -251,11 +223,7 @@ Retorna a contagem de tarefas, agrupadas por status.
       "Concluída": 10
     }
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /tasks/by-priority - Buscar tarefas por prioridade\</strong\>\</summary\>
+GET /tasks/by-priority - Buscar tarefas por prioridade
 
 Encontra todas as tarefas que correspondem a um determinado nível de prioridade.
 
@@ -263,11 +231,7 @@ Encontra todas as tarefas que correspondem a um determinado nível de prioridade
     ```bash
     curl "http://localhost:8080/gestao-tarefas/by-priority?priority=1"
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /tasks/by-responsible - Buscar tarefas por responsável\</strong\>\</summary\>
+GET /tasks/by-responsible - Buscar tarefas por responsável
 
 Encontra todas as tarefas atribuídas a uma pessoa específica.
 
@@ -275,11 +239,7 @@ Encontra todas as tarefas atribuídas a uma pessoa específica.
     ```bash
     curl "http://localhost:8080/gestao-tarefas/by-responsible?responsible=Lucas%20Paiolo"
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /tasks/ordered-by-priority - Listar tarefas por prioridade\</strong\>\</summary\>
+GET /tasks/ordered-by-priority - Listar tarefas por prioridade
 
 Retorna todas as tarefas ordenadas por prioridade em ordem ascendente.
 
@@ -288,15 +248,13 @@ Retorna todas as tarefas ordenadas por prioridade em ordem ascendente.
     curl http://localhost:8080/gestao-tarefas/ordered-by-priority
     ```
 
-\</details\>
 
 ### API de Listas de Tarefas
 
 Endpoints para gerenciar listas e suas tarefas associadas.
 *Nota: Para criar uma `TaskList`, você deve primeiro salvá-la no banco de dados. A API atual não expõe um endpoint direto para a criação de `TaskList`; isso deve ser feito no nível do banco de dados ou via cascata de outra entidade.*
 
-\<details\>
-\<summary\>\<strong\>POST /lists - Adicionar uma tarefa a uma lista\</strong\>\</summary\>
+POST /lists - Adicionar uma tarefa a uma lista
 
 Associa uma tarefa existente a uma lista de tarefas existente.
 
@@ -305,11 +263,7 @@ Associa uma tarefa existente a uma lista de tarefas existente.
     ```bash
     curl -X POST "http://localhost:8080/gestao-tarefas/lists?listId=1&taskId=5"
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /lists/{id}/tasks - Obter todas as tarefas de uma lista\</strong\>\</summary\>
+GET /lists/{id}/tasks - Obter todas as tarefas de uma lista
 
 Recupera todas as tarefas que pertencem a uma lista específica.
 
@@ -317,11 +271,7 @@ Recupera todas as tarefas que pertencem a uma lista específica.
     ```bash
     curl http://localhost:8080/gestao-tarefas/lists/1/tasks
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>DELETE /lists/{id} - Deletar uma lista de tarefas\</strong\>\</summary\>
+DELETE /lists/{id} - Deletar uma lista de tarefas
 
 Deleta uma lista de tarefas inteira e, devido ao cascateamento, todas as tarefas dentro dela.
 
@@ -329,11 +279,7 @@ Deleta uma lista de tarefas inteira e, devido ao cascateamento, todas as tarefas
     ```bash
     curl -X DELETE http://localhost:8080/gestao-tarefas/lists/1
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>DELETE /lists/{listId}/tasks/{taskId} - Remover tarefa da lista\</strong\>\</summary\>
+DELETE /lists/{listId}/tasks/{taskId} - Remover tarefa da lista
 
 Remove a associação entre uma tarefa e uma lista. A tarefa em si não é deletada.
 
@@ -341,11 +287,7 @@ Remove a associação entre uma tarefa e uma lista. A tarefa em si não é delet
     ```bash
     curl -X DELETE http://localhost:8080/gestao-tarefas/lists/1/tasks/5
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByStatus - Filtrar lista por status\</strong\>\</summary\>
+GET /lists/{listId}/tasks/filterByStatus - Filtrar lista por status
 
 Obtém todas as tarefas em uma lista filtradas por um status específico.
 
@@ -353,11 +295,7 @@ Obtém todas as tarefas em uma lista filtradas por um status específico.
     ```bash
     curl "http://localhost:8080/gestao-tarefas/lists/1/tasks/filterByStatus?status=Pendente"
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByPriority - Filtrar lista por prioridade\</strong\>\</summary\>
+GET /lists/{listId}/tasks/filterByPriority - Filtrar lista por prioridade
 
 Obtém todas as tarefas em uma lista filtradas por um nível de prioridade específico.
 
@@ -365,11 +303,7 @@ Obtém todas as tarefas em uma lista filtradas por um nível de prioridade espec
     ```bash
     curl "http://localhost:8080/gestao-tarefas/lists/1/tasks/filterByPriority?priority=1"
     ```
-
-\</details\>
-
-\<details\>
-\<summary\>\<strong\>GET /lists/{listId}/tasks/filterByResponsible - Filtrar lista por responsável\</strong\>\</summary\>
+GET /lists/{listId}/tasks/filterByResponsible - Filtrar lista por responsável
 
 Obtém todas as tarefas em uma lista filtradas por uma pessoa responsável específica.
 
@@ -377,8 +311,6 @@ Obtém todas as tarefas em uma lista filtradas por uma pessoa responsável espec
     ```bash
     curl "http://localhost:8080/gestao-tarefas/lists/1/tasks/filterByResponsible?responsible=Gael%20Rodrigues"
     ```
-
-\</details\>
 
 -----
 
