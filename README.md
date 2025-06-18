@@ -1,3 +1,10 @@
+Of course\! Here is an enhanced version of your `README.md` file.
+
+It includes all the endpoints from your controllers, example requests using `curl`, clarifications on the database setup, and an improved structure to provide a better experience for developers.
+
+You can copy and paste the following content directly into your `README.md` file.
+
+````markdown
 # 📝 ProjetoSpring_Grupo5_GestaoTarefas
 
 A task management system developed in **Java with Spring Boot** as part of an academic project. This system allows users to create, manage, and organize tasks within lists through a RESTful API.
